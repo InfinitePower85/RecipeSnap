@@ -28,14 +28,15 @@ export default function ImageInput() {
             // launch image library and get selected image
             let result = await ImagePicker.launchImageLibraryAsync();
             console.log("ImagePicker result:", result); 
-            const ts = JSON.parse(toString(result));
+            const ts = result.assets;
+            console.log(ts[0].uri)
             console.log("sdajlfdsajlkfdsajlkfdsajlkfdsajlkf");
-            console.log("hello", result.uri);
-            if(!result.cancelled && result.uri) { 
+            console.log("hello", result.assets[0].uri);
+            if(!result.cancelled && result.assets[0].uri) { 
                 // if an image is selected (not cancelled),  
                 // update the file state variable 
-                setFile(result.uri); 
-                console.log("File state updated:", result.uri);
+                setFile(result.assets[0].uri); 
+                console.log("File state updated:", file);
   
                 // Clear any previous errors 
                 setError(null); 
@@ -66,7 +67,7 @@ export default function ImageInput() {
                 // display the selected image 
                 <View style={styles.imageContainer}> 
                     <Text>{file}</Text>
-                    <Image source={{ uri: file }} /> 
+                    {file && <Image source={{ uri: file }} /> }
                 </View> 
             ) : ( 
 
