@@ -21,7 +21,6 @@ const HomeScreen = ({route}) => {
                 <Text>This is the home screen!!!!</Text>
 
 
-                <CameraInput />
                 <ImageInput />
 
 
