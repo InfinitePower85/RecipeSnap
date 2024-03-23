@@ -1,14 +1,36 @@
 import React from "react";
-import { Image } from 'react-native'
+import { Image, View } from 'react-native'
+import { StyleSheet } from "react-native";
+import { Dimensions } from "react-native";
 
+
+const deviceHeight = Dimensions.get('window').height;
+const deviceWidth = Dimensions.get('window').width;
 // Separate component for Logo
 const Logo = () => {
     return (
-      <Image
-        source={require('../assets/RecipeSnapFavico.png')}
-        style={{ justifyContent: 'center', alignItems: 'center', width: 176, height: 220, marginTop: 5, zIndex:1 }}
-      />
+        <View style={logoStyles.logoBar}>
+          <Image
+            source={require('../assets/RecipeSnapFavico.png')}
+            style={logoStyles.image}
+            resizeMode = 'contain'
+          />
+        </View>
     );
   };
 
-export default Logo;
+const logoStyles = StyleSheet.create({
+  logoBar: {
+    height: deviceHeight/5,
+    width: deviceWidth,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  image: { 
+    width: '50%', 
+    height: undefined, 
+    aspectRatio: 1,
+    }
+});
+
+export {Logo, logoStyles};
