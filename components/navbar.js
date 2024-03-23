@@ -64,13 +64,6 @@ const navbarStyles = StyleSheet.create({
 
     },
 
-    logoBar: {
-        height: deviceHeight/5,
-        width: deviceWidth,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-
     navbarButton: {
         height: '100%',
         width: '33%',
