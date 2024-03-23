@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     },
 
     navbarContainer: {
-        height: deviceHeight/12,
+        height: deviceHeight/9,
         width: deviceWidth,
         backgroundColor: '#04AC7E',
         alignItems: 'center',
