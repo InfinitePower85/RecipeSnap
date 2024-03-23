@@ -6,13 +6,15 @@ import baseStyle from '../styles/baseStyles';
 const LoginScreen = ({navigation}) => {
     return (
         <View style={styles.container}>
-        <Text>Open up App.js to start working on your sadfdsfdsafdsafa!</Text>
-        <Button style={baseStyle.button}
-        title="button"
-        onPress={() =>
-          navigation.navigate('Home')
-        } 
-        />
+          <Logo></Logo>
+          <Text>Welcome to RecipeSnap!</Text>          
+          <Text>Sign Up or Log In Below</Text>
+          <Button style={baseStyle.button}
+          title="button"
+          onPress={() =>
+            navigation.navigate('Home')
+          } 
+          />
         </View>
     );
   };
