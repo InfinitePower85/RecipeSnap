@@ -1,6 +1,11 @@
 import React from "react";
-import { Image } from 'react-native'
+import { Image, View } from 'react-native'
+import { StyleSheet } from "react-native";
+import { Dimensions } from "react-native";
 
+
+const deviceHeight = Dimensions.get('window').height;
+const deviceWidth = Dimensions.get('window').width;
 // Separate component for Logo
 const Logo = () => {
     return (
@@ -21,6 +26,11 @@ const logoStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  image: { 
+    width: '50%', 
+    height: undefined, 
+    aspectRatio: 1,
+    }
 });
 
 export {Logo, logoStyles};
