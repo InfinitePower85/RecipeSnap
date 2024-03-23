@@ -7,25 +7,19 @@ import { TouchableOpacity } from 'react-native';
 
 const HomeScreen = ({route}) => {
     return (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={[baseStyle.container, {backgroundColor: '#f5fbe2', flexGrow: 1}]}>
             <Logo></Logo>
-        <Text>Open up App.js to start working on your app!</Text>
+            <Text>Open up App.js to start working on your app!</Text>
 
-        <TouchableOpacity onPress={() => route.navigate('Profile', {name: 'Jane'})}
-
-            style={baseStyle.button}
-        > 
-        
-        <Text> Hello world </Text> 
-        
-        </TouchableOpacity>
-        <Button styles={baseStyle.button}
-        title="Go to Jane's profile"
-        onPress={() =>
-          route.navigate('Profile', {name: 'Jane'})
-        }
-        />
-        </View>
+            <TouchableOpacity 
+                onPress={() => route.navigate('Profile', {name: 'Jane'})}
+                style={baseStyle.button}
+            > 
+            
+            <Text> Do something </Text> 
+            
+            </TouchableOpacity>
+        </ScrollView>
     );
   };
   const styles = StyleSheet.create({
