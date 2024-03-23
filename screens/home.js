@@ -12,7 +12,7 @@ const HomeScreen = ({route}) => {
 
             <ScrollView contentContainerStyle={[baseStyle.container, {backgroundColor: '#f5fbe2', flexGrow: 1}]}>
                 <Logo></Logo>
-                <Text>Open up App.js to start working on your app!</Text>
+                <Text>This is the home screen!!!!</Text>
 
                 <TouchableOpacity 
                     onPress={() => route.navigate('Profile', {name: 'Jane'})}
