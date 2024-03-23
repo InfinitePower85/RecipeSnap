@@ -8,6 +8,9 @@ import { TouchableOpacity } from 'react-native';
 import { navbarStyles, Navbar } from '../components/navbar';
 
 
+import CameraInput from '../components/CameraInput';
+import ImageInput from '../components/ImageInput';
+
 const HomeScreen = ({route}) => {
     return (
         <SafeAreaView style={[baseStyle.safeArea]}>
@@ -16,6 +19,11 @@ const HomeScreen = ({route}) => {
                 
                 <Logo> </Logo>
                 <Text>This is the home screen!!!!</Text>
+
+
+                <CameraInput />
+                <ImageInput />
+
 
                 <TouchableOpacity 
                     onPress={() => route.navigate('Profile', {name: 'Jane'})}
