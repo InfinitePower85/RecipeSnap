@@ -20,7 +20,7 @@ const HomeScreen = ({route}) => {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: '#f2fbe2',
       alignItems: 'center',
       justifyContent: 'center',
     },
