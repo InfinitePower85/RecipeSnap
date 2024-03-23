@@ -1,10 +1,21 @@
 import React from "react";
-
+import { View, Text } from "react-native";
+import { StyleSheet } from "react-native";
 //Seperate component for Navbar
+import {Dimensions} from 'react-native';
 
 
+const Navbar = () => {
+    return (
+        <View style={styles.container}>
+            <Text> Navbar </Text>
+        </View>
+    );
+  };
 
-const styles = StyleSheet.create({
+const deviceHeight = Dimensions.get('window').width;
+const deviceWidth = Dimensions.get('window').height;
+const navbarStyles = StyleSheet.create({
     container: {
         height: deviceHeight,
         width: deviceWidth,
@@ -29,4 +40,4 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 });
-export default Navbar;
+export {Navbar, navbarStyles};
