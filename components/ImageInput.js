@@ -36,7 +36,7 @@ export default function ImageInput() {
                 // if an image is selected (not cancelled),  
                 // update the file state variable 
                 setFile(result.assets[0].uri); 
-                console.log("File state updated:", result.assets[0].uri);
+                console.log("File state updated:", file);
   
                 // Clear any previous errors 
                 setError(null); 
@@ -67,7 +67,7 @@ export default function ImageInput() {
                 // display the selected image 
                 <View style={styles.imageContainer}> 
                     <Text>{file}</Text>
-                    <Image source={{ uri: {file} }} /> 
+                    {file && <Image source={{ uri: file }} /> }
                 </View> 
             ) : ( 
 
