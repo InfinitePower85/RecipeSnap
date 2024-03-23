@@ -4,12 +4,40 @@ import { StyleSheet } from "react-native";
 import {Dimensions} from 'react-native';
 import { TouchableHighlight } from "react-native";
 
+state = {
+    login: 'block',
+    home: 'none',
+    cam: 'none',
+    profile: 'none',
+  }
+  
+  homePress = () => this.setState(state => ({
+    login: 'none',
+    home: 'block',
+    cam: 'none',
+    profile: 'none',
+  }));
+  
+  cameraPress = () => this.setState(state => ({
+    login: 'none',
+    home: 'none',
+    cam: 'block',
+    profile: 'none',
+  }));
+  
+  profilePress = () => this.setState(state => ({
+    login: 'none',
+    home: 'none',
+    cam: 'none',
+    profile: 'block',
+  }));
+
 //Seperate component for Navbar
 const Navbar = () => {
     return (
         <View style={navbarStyles.navbarContainer}>
             <TouchableHighlight style={navbarStyles.navbarButton}
-                onPress={this.respondPress}
+                onPress={this.homePress}
                 >
                 <Image
                     source={require('../assets/home.png')}
@@ -19,7 +47,7 @@ const Navbar = () => {
             </TouchableHighlight>
 
             <TouchableHighlight style={navbarStyles.navbarButton}
-                onPress={this.respondPress}
+                onPress={this.cameraPress}
                 >
                 <Image
                     source={require('../assets/camera.png')}
@@ -30,7 +58,7 @@ const Navbar = () => {
             </TouchableHighlight>
 
             <TouchableHighlight style={navbarStyles.navbarButton}
-                onPress={this.respondPress}
+                onPress={this.profilePress}
                 >
                 <Image
                     source={require('../assets/user.png')}
