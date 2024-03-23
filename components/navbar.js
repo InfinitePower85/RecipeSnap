@@ -23,7 +23,7 @@ const navbarStyles = StyleSheet.create({
     },
 
     navbarContainer: {
-        height: deviceHeight/6,
+        height: deviceHeight/5,
         width: deviceWidth,
         backgroundColor: '#04AC7E',
         alignItems: 'center',
