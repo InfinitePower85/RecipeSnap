@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import { StyleSheet } from "react-native";
 //Seperate component for Navbar
 import {Dimensions} from 'react-native';
@@ -8,8 +8,32 @@ import {Dimensions} from 'react-native';
 const Navbar = () => {
     return (
         <View style={navbarStyles.navbarContainer}>
+            <TouchableHighlight style={styles.navButton}
+                onPress={this.respondPress}
+                >
+                <Image
+                    source={{ uri: 'home.png' }}
+                    style={{ height: deviceHeight/12, width: deviceWidth/12, borderColor: "#FFFFFF", borderWidth: 0, }}
+                />
+            </TouchableHighlight>
 
-            
+            <TouchableHighlight style={styles.navButton}
+                onPress={this.respondPress}
+                >
+                <Image
+                    source={{ uri: 'camera.png' }}
+                    style={{ height: deviceHeight/12, width: deviceWidth/12, borderColor: "#FFFFFF", borderWidth: 0, }}
+                />
+            </TouchableHighlight>
+
+            <TouchableHighlight style={styles.navButton}
+                onPress={this.respondPress}
+                >
+                <Image
+                    source={{ uri: 'profile.png' }}
+                    style={{ height: deviceHeight/12, width: deviceWidth/12, borderColor: "#FFFFFF", borderWidth: 0, }}
+                />
+            </TouchableHighlight>
         </View>
 
     );
