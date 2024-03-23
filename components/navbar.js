@@ -7,9 +7,11 @@ import {Dimensions} from 'react-native';
 
 const Navbar = () => {
     return (
-        <View style={styles.container}>
-            <Text> Navbar </Text>
+        <View style={navbarStyles.navbarContainer}>
+
+            
         </View>
+
     );
   };
 
@@ -23,7 +25,7 @@ const navbarStyles = StyleSheet.create({
     },
 
     navbarContainer: {
-        height: deviceHeight/6,
+        height: deviceHeight/5,
         width: deviceWidth,
         backgroundColor: '#04AC7E',
         alignItems: 'center',
