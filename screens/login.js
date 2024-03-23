@@ -7,9 +7,9 @@ const LoginScreen = ({navigation}) => {
         <View style={styles.container}>
         <Text>Open up App.js to start working on your sadfdsfdsafdsafa!</Text>
         <Button
-        title="Go to Jane's profile"
+        title="button"
         onPress={() =>
-          navigation.navigate('Profile', {name: 'Jane'})
+          navigation.navigate('Home')
         }
         />
         </View>
