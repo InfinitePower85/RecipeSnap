@@ -23,7 +23,7 @@ const HomeScreen = ({route}) => {
                 </TouchableOpacity>
                 
             </ScrollView>
-            <View style={navbarStyles.navbarContainer}></View>
+            <Navbar></Navbar>
         </SafeAreaView>
 
 
