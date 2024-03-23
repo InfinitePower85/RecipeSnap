@@ -17,7 +17,9 @@ const HomeScreen = ({route}) => {
             > 
             
             <Text> Do something </Text> 
-            
+            <View style={styles.navbarContainer}>
+              
+            </View>
             </TouchableOpacity>
         </ScrollView>
     );
