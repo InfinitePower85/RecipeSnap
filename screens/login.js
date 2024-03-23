@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native';
 import { Button } from 'react-native';
 import baseStyle from '../styles/baseStyles';
+import { Logo } from '../components/logo';
 
 const LoginScreen = ({navigation}) => {
     return (
