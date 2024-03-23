@@ -7,9 +7,11 @@ import {Dimensions} from 'react-native';
 
 const Navbar = () => {
     return (
-        <View style={styles.container}>
-            <Text> Navbar </Text>
+        <View style={navbarStyles.navbarContainer}>
+
+            
         </View>
+
     );
   };
 
