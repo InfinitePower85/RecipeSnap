@@ -20,29 +20,38 @@ export default function ImageInput() {
                 "Permission Denied", 
                 `Sorry, we need camera roll permission to upload images.` 
             ); 
-        } else { 
+        } 
+        
+        else { 
 
             // launch image library and get selected image
-            const result = 
-                await ImagePicker.launchImageLibraryAsync(); 
+            const result = await ImagePicker.launchImageLibraryAsync();
+            console.log("ImagePicker result:", result); 
   
-            if (!result.cancelled) { 
-
+            if(!result.cancelled && result.uri) { 
                 // if an image is selected (not cancelled),  
                 // update the file state variable 
                 setFile(result.uri); 
+                console.log("File state updated:", result.uri);
   
                 // Clear any previous errors 
                 setError(null); 
-            } 
+            } else {
+
+                // Handle when the user cancels image selection
+                setError("Image selection cancelled.");
+            }
+
         } 
     }; 
   
     return ( 
         <View style={styles.container}> 
+            
             {/* button to choose an image */} 
             <TouchableOpacity style={styles.button} 
                 onPress={pickImage}> 
+                
                 <Text style={styles.buttonText}> 
                     Choose Image 
                 </Text> 
@@ -53,13 +62,14 @@ export default function ImageInput() {
 
                 // display the selected image 
                 <View style={styles.imageContainer}> 
-                    <Image source={{ uri: file }} 
-                        style={styles.image} /> 
+                    <Text>{file}</Text>
+                    <Image source={{ uri: file }} /> 
                 </View> 
             ) : ( 
 
                 // no image selected
-                <Text style={styles.errorText}>{error}</Text> 
+                
+                <Text style={styles.errorText}>nooo22222{error}</Text> 
             )} 
         </View> 
     ); 
