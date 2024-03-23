@@ -5,7 +5,7 @@ import { Image } from 'react-native'
 const Logo = () => {
     return (
       <Image
-        source={require('../assets/RecipeSnap.png')}
+        source={require('../assets/RecipeSnapFavico.png')}
         style={{ justifyContent: 'center', alignItems: 'center', width: 176, height: 220, marginTop: 5, zIndex:1 }}
       />
     );
