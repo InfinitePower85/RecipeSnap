@@ -40,7 +40,6 @@ const Navbar = () => {
                 />
             </TouchableHighlight>
         </View>
-
     );
   };
 
@@ -62,6 +61,13 @@ const navbarStyles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap',
 
+    },
+
+    logoBar: {
+        height: deviceHeight/5,
+        width: deviceWidth,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 
     navbarButton: {
