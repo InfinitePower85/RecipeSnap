@@ -1,12 +1,10 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
 import { StyleSheet } from "react-native";
-//Seperate component for Navbar
 import {Dimensions} from 'react-native';
 import { TouchableHighlight } from "react-native";
 
-
-
+//Seperate component for Navbar
 const Navbar = () => {
     return (
         <View style={navbarStyles.navbarContainer}>
@@ -42,7 +40,6 @@ const Navbar = () => {
                 />
             </TouchableHighlight>
         </View>
-
     );
   };
 
@@ -65,6 +62,13 @@ const navbarStyles = StyleSheet.create({
         flexWrap: 'wrap',
         borderWidth: 2,
 
+    },
+
+    logoBar: {
+        height: deviceHeight/5,
+        width: deviceWidth,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 
     navbarButton: {
