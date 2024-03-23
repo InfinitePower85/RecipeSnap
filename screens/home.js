@@ -8,7 +8,7 @@ import { navbarStyles, Navbar } from '../components/navbar';
 
 const HomeScreen = ({route}) => {
     return (
-        <SafeAreaView style={baseStyle.container}>
+        <SafeAreaView style={[baseStyle.safeArea]}>
 
             <ScrollView contentContainerStyle={[baseStyle.container, {backgroundColor: '#f5fbe2', flexGrow: 1}]}>
                 <Logo></Logo>
