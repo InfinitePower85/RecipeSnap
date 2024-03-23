@@ -8,6 +8,34 @@ import { navbarStyles, Navbar } from '../components/navbar';
 import ImageInput from '../components/ImageInput';
 import Camera from '../components/CameraInput';
 
+state = {
+  login: 'block',
+  home: 'none',
+  cam: 'none',
+  profile: 'none',
+}
+
+homePress = () => this.setState(state => ({
+  login: 'none',
+  home: 'block',
+  cam: 'none',
+  profile: 'none',
+}));
+
+cameraPress = () => this.setState(state => ({
+  login: 'none',
+  home: 'none',
+  cam: 'block',
+  profile: 'none',
+}));
+
+profilePress = () => this.setState(state => ({
+  login: 'none',
+  home: 'none',
+  cam: 'none',
+  profile: 'block',
+}));
+
 const HomeScreen = ({route}) => {
     return (
         <SafeAreaView style={[baseStyle.safeArea]}>
