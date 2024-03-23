@@ -1,0 +1,1 @@
+{"result": [{"label": "BURRITO", "score": 0.9985601305961609}, {"label": "CORN", "score": 0.0006824400625191629}, {"label": "HOTDOG", "score": 0.0002736911701504141}, {"label": "FRENCH LOAF", "score": 0.0002724627556744963}, {"label": "GUACAMOLE", "score": 0.00010474923328729346}], "success": true, "errors": [], "messages": []}

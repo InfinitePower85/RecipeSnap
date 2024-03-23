@@ -3,6 +3,8 @@ import { View, Text, Image, TouchableOpacity,
     StyleSheet, Alert } from "react-native"; 
 import * as ImagePicker from "expo-image-picker"; 
 import { useState } from "react";
+import baseStyle from "../styles/baseStyles";
+
 
 export default function ImageInput() { 
     const [file, setFile] = useState(null); 
@@ -10,8 +12,7 @@ export default function ImageInput() {
   
     // pick image from library
     const pickImage = async () => { 
-        const { status } = await ImagePicker. 
-            requestMediaLibraryPermissionsAsync(); 
+        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync(); 
   
         if (status !== "granted") { 
   
@@ -25,9 +26,11 @@ export default function ImageInput() {
         else { 
 
             // launch image library and get selected image
-            const result = await ImagePicker.launchImageLibraryAsync();
+            let result = await ImagePicker.launchImageLibraryAsync();
             console.log("ImagePicker result:", result); 
-  
+            const ts = JSON.parse(toString(result));
+            console.log("sdajlfdsajlkfdsajlkfdsajlkfdsajlkf");
+            console.log("hello", result.uri);
             if(!result.cancelled && result.uri) { 
                 // if an image is selected (not cancelled),  
                 // update the file state variable 
@@ -49,10 +52,10 @@ export default function ImageInput() {
         <View style={styles.container}> 
             
             {/* button to choose an image */} 
-            <TouchableOpacity style={styles.button} 
+            <TouchableOpacity style={baseStyle.button} 
                 onPress={pickImage}> 
                 
-                <Text style={styles.buttonText}> 
+                <Text > 
                     Choose Image 
                 </Text> 
             </TouchableOpacity> 
