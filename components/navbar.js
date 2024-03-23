@@ -33,7 +33,7 @@ const navbarStyles = StyleSheet.create({
     navbarButton: {
         marginTop: deviceHeight/25,
         height: deviceHeight/10,
-        width: deviceWidth/5,
+        width: deviceWidth/3,
         borderColor: '#7A0BC0',
         backgroundColor: 'white',
         alignItems: 'center',
