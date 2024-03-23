@@ -3,6 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import HomeScreen from './screens/home';
 import LoginScreen from './screens/login';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import ExampleComponent from './screens/colorButton';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,6 +13,7 @@ export default function App() {
       <Stack.Navigator  initialRouteName="Login">
         <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/> 
         <Stack.Screen name="Login" component={LoginScreen} options={{headerShown: false}} />
+        <Stack.Screen name="eee" component={ExampleComponent} options={{headerShown: false}} />
       </Stack.Navigator>
     </NavigationContainer>
   );
