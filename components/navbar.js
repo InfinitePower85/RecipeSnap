@@ -1,12 +1,10 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
 import { StyleSheet } from "react-native";
-//Seperate component for Navbar
 import {Dimensions} from 'react-native';
 import { TouchableHighlight } from "react-native";
 
-
-
+//Seperate component for Navbar
 const Navbar = () => {
     return (
         <View style={navbarStyles.navbarContainer}>
