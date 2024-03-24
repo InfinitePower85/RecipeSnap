@@ -8,7 +8,7 @@ import { navbarStyles, Navbar } from '../components/navbar';
 
 import CameraInput from '../components/CameraInput';
 import ImageInput from '../components/ImageInput';
-import IngredientsDisplay from '../components/IngredientsDisplay';
+import IngredientsDisplay from '../components/ingredientsDisplay';
 
 const CameraScreen = ({route}) => {
     return (
