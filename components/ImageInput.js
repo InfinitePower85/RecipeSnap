@@ -90,7 +90,6 @@ export default function ImageInput() {
 
                 // display the selected image 
                 <View style={styles.imageContainer}> 
-                    <Text>{file}</Text>
                     <Image source={{ uri: file }} style={{ width: 200, height: 200 }} />
                 </View> 
             ) : ( 
