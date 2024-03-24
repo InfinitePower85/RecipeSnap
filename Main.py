@@ -11,11 +11,6 @@ import math
 import numbers
 import firebase_admin
 
-ACCOUNT_ID = "b0fb19e4e378abe3001cbec81c2a71f5"
-AUTH_TOKEN = "q2i_bqwNjbY3DwyHoMUeo3BEFaw6qxc97aGjwxJR"
-APP_ID = "6b661ac9"
-APP_KEY = "c0d96c7a8b663e432b6361134325f55f"
-
 from fastapi import FastAPI, UploadFile
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -123,21 +118,21 @@ def closestWordDict(map, word, link):
     result["Digital Coupon"] = map[index]["Digital Coupon"]
     result["Label"] = word
     result["UPC"] = map[index]["UPC"]
-    result["Link"] = link
+    # result["Link"] = link
     return result
 
 model = "@cf/microsoft/resnet-50"
 # model = "@cf/unum/uform-gen2-qwen-500m"
 
-heif_file = pillow_heif.read_heif("image.HEIC")
-image = Image.frombytes(
-    heif_file.mode,
-    heif_file.size,
-    heif_file.data,
-    "raw",
-)
+# heif_file = pillow_heif.read_heif("image.HEIC")
+# image = Image.frombytes(
+#     heif_file.mode,
+#     heif_file.size,
+#     heif_file.data,
+#     "raw",
+# )
 
-image.save("./image.png", format("png"))
+# image.save("./image.png", format("png"))
 
 with open("image.png", 'rb') as image_file:
     image_bytes = image_file.read()
@@ -189,7 +184,9 @@ for ingredient in items_map[0]["recipe"]["ingredients"]:
     # print(ingredient["text"])
     label = extractRecipeIngredients(ingredient["text"])
     print(items_map[0]["recipe"]["shareAs"])
-    result[ingredient["text"]] = closestWordDict(itemsPrices_map, label, items_map[0]["recipe"]["shareAs"])
+    if ingredient["text"] != "":
+        result[ingredient["text"]] = closestWordDict(itemsPrices_map, label, items_map[0]["recipe"]["shareAs"])
+result[items_map[0]["recipe"]["shareAs"]] = ""
 
 with open("result.json", "w") as outfile: 
     json.dump(result, outfile)
