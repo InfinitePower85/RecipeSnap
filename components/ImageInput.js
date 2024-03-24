@@ -47,10 +47,22 @@ export default function ImageInput() {
                 });*/
 
                 try { // note that the backend api doesn't work currently   
+                    fetch(`http://127.0.0.1:8000`)
+                    .then(response => response.json())
+                    .then(data => {
+                      console.log('Data received:', data);
+                    })
+                    .catch(error => {
+                      console.error('Error fetching data:', error);
+                    });
                     console.log("before error ")
-                    const response2 = await axios.post('http://127.0.0.1:8000', 'hello world');
-                    console.log(response2.data)
-                    const response = await axios.post('http://127.0.0.1:8000', formData);
+                    const response2 = await axios.get('https://localhost:8000', {headers : {
+                        'User-Agent': 'PostmanRuntime/7.36.3'
+                    }});
+                    console.log("testing");
+                    //console.log(response2.data);
+                    //const response = await axios.post('http://127.0.0.1:8000/upload', formData);
+                    response.status = 200;
                     if (response.status === 200) {
                         console.log('Image uploaded successfully:', response.data);
                         // Handle the backend response as needed
