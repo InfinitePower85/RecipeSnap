@@ -9,6 +9,12 @@ from py_edamam import PyEdamam
 import textdistance as td
 import math
 import numbers
+import firebase_admin
+
+ACCOUNT_ID = "b0fb19e4e378abe3001cbec81c2a71f5"
+AUTH_TOKEN = "q2i_bqwNjbY3DwyHoMUeo3BEFaw6qxc97aGjwxJR"
+APP_ID = "6b661ac9"
+APP_KEY = "c0d96c7a8b663e432b6361134325f55f"
 
 from fastapi import FastAPI, UploadFile
 from fastapi.responses import JSONResponse
@@ -91,7 +97,7 @@ def extractRecipeIngredients(word):
     return label[:len(label)-1]
 
 # Finds price of an item by not requiring the exact name (e.g. lobsters vs lobster)
-def closestWordDict(map, word):
+def closestWordDict(map, word, link):
     maxHamming = 0
     index = 0
     # print(itemPrices.content[i]["Description"])
@@ -115,6 +121,9 @@ def closestWordDict(map, word):
     result["Store Discount"] = map[index]["Store Discount"]
     result["Loyalty Discount"] = map[index]["Loyalty Discount"]
     result["Digital Coupon"] = map[index]["Digital Coupon"]
+    result["Label"] = word
+    result["UPC"] = map[index]["UPC"]
+    result["Link"] = link
     return result
 
 model = "@cf/microsoft/resnet-50"
@@ -133,23 +142,23 @@ image.save("./image.png", format("png"))
 with open("image.png", 'rb') as image_file:
     image_bytes = image_file.read()
 
-# response = requests.post(
-#     f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/{model}",
-#     headers={"Authorization": f"Bearer {AUTH_TOKEN}"},
-#     data=image_bytes,
-#     # prompt="What is inside this food?"
-# )
-
-# inference = response.json()
-
-# maxScore = 0
-# maxFood = ""
-# for food in inference["result"]:
-#     if(food["score"] > maxScore):
-#         maxScore = food["score"]
-#         maxFood = food["label"]
-
 maxFood = "BURRITO"
+
+response = requests.post(
+    f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/{model}",
+    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},
+    data=image_bytes,
+    # prompt="What is inside this food?"
+)
+
+inference = response.json()
+
+maxScore = 0
+maxFood = ""
+for food in inference["result"]:
+    if(food["score"] > maxScore):
+        maxScore = food["score"]
+        maxFood = food["label"]
 
 request_url = "https://api.edamam.com/search?q=" + maxFood + "&app_id=" + APP_ID + "&app_key=" + APP_KEY
 r = requests.get(request_url)
@@ -177,10 +186,10 @@ for i, item in enumerate(itemsPrices_list):
 
 result = {}
 for ingredient in items_map[0]["recipe"]["ingredients"]:
-    print(ingredient["text"])
+    # print(ingredient["text"])
     label = extractRecipeIngredients(ingredient["text"])
-    result[label] = closestWordDict(itemsPrices_map, label)
-    print(result[label])
+    print(items_map[0]["recipe"]["shareAs"])
+    result[ingredient["text"]] = closestWordDict(itemsPrices_map, label, items_map[0]["recipe"]["shareAs"])
 
 with open("result.json", "w") as outfile: 
     json.dump(result, outfile)
