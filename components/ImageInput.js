@@ -5,9 +5,31 @@ import * as ImagePicker from "expo-image-picker";
 import { useState } from "react";
 import baseStyle from "../styles/baseStyles";
 //import * as FileSystem from 'expo-file-system';
-import axios from "axios";
-  
+//import axios from "axios";
+//import storage from '@react-native-firebase/storage';
+
   // Example usage:
+
+
+import { firebase } from '@react-native-firebase/app';
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAQ5CZNUn5AQVyqDcWKCLy78qRZYNiLdbM",
+    authDomain: "recipesnap-1adae.firebaseapp.com",
+    projectId: "recipesnap-1adae",
+    storageBucket: "recipesnap-1adae.appspot.com",
+    messagingSenderId: "84217242804",
+    appId: "1:84217242804:web:9b94568ad783c9e8b7a3e1",
+    measurementId: "G-V08JX7V0QP"
+  };
+  
+  firebase.initializeApp(firebaseConfig);
+
+  const uploadImageToFirebase = async (imageUri, imageName) => {
+    const reference = storage().ref(`images/${imageName}`);
+    await reference.putFile(imageUri);
+    console.log('Image uploaded successfully!');
+  };
 export default function ImageInput() { 
     const [file, setFile] = useState(null); 
     const [error, setError] = useState(null); 
@@ -36,24 +58,7 @@ export default function ImageInput() {
                 // update the file state variable 
                 setFile(result.assets[0].uri); 
                 console.log("File state updated:", file);
-                const formData = new FormData();
-                formData.append('image', {
-                  name: 'SampleFile.jpg', // Whatever your filename is
-                  uri: file,
-                  type: 'image/jpeg', // Adjust the type based on your image format
-                });
-
-                try { // note that the backend api doesn't work currently   
-                    const response = await axios.post('https://your-backend-api.com/upload', formData);
-                    if (response.status === 200) {
-                        console.log('Image uploaded successfully:', response.data);
-                        // Handle the backend response as needed
-                    } else {
-                        console.error('Image upload failed.');
-                    }
-                } catch (error) {
-                    console.error('Error uploading image:', error);
-                }
+                uploadImageToFirebase('hello_world.jpg', file);                
                 // Clear any previous errors 
                 setError(null); 
             } else {
