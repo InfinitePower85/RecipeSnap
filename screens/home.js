@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native';
 import { Button } from 'react-native';
 import {Logo, logoStyles} from '../components/logo';
-
+import { Image } from 'react-native';
 import baseStyle from '../styles/baseStyles';
 import { TouchableOpacity } from 'react-native';
 import { navbarStyles, Navbar } from '../components/navbar';
@@ -14,7 +14,6 @@ const HomeScreen = ({route}) => {
 
                 <Logo />
                 <Text> Hello, this is home screen </Text>
-                
             </ScrollView>
             <Navbar></Navbar>
         </SafeAreaView>
