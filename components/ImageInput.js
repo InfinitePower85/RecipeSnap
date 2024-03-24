@@ -5,6 +5,7 @@ import * as ImagePicker from "expo-image-picker";
 import { useState } from "react";
 import baseStyle from "../styles/baseStyles";
 //import * as FileSystem from 'expo-file-system';
+
 import axios from "axios";
   
   // Example usage:
@@ -35,17 +36,21 @@ export default function ImageInput() {
                 // if an image is selected (not cancelled),  
                 // update the file state variable 
                 setFile(result.assets[0].uri); 
-                console.log("File state updated:", file);
+                console.log("hello world")
+                console.log("File state updated:", result.assets[0].uri);
                 const formData = new FormData();
-                formData.append('image', {
-                  name: 'SampleFile.jpg', // Whatever your filename is
-                  uri: file,
-                  type: 'image/jpeg', // Adjust the type based on your image format
-                });
+                formData.append(file)
+                /*formData.append('image', {
+                  //name: 'SampleFile.jpg', // Whatever your filename is
+                  file: file,
+                  //type: 'image/jpeg', // Adjust the type based on your image format
+                });*/
 
                 try { // note that the backend api doesn't work currently   
-                    const response = await axios.post('https://your-backend-api.com/upload', formData);
-                    
+                    console.log("before error ")
+                    const response2 = await axios.post('http://127.0.0.1:8000', 'hello world');
+                    console.log(response2.data)
+                    const response = await axios.post('http://127.0.0.1:8000', formData);
                     if (response.status === 200) {
                         console.log('Image uploaded successfully:', response.data);
                         // Handle the backend response as needed
@@ -85,7 +90,6 @@ export default function ImageInput() {
 
                 // display the selected image 
                 <View style={styles.imageContainer}> 
-                    <Text>{file}</Text>
                     <Image source={{ uri: file }} style={{ width: 200, height: 200 }} />
                 </View> 
             ) : ( 

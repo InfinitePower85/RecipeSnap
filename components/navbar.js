@@ -41,7 +41,7 @@ const Navbar = () => {
 
     return (
         <View style={navbarStyles.navbarContainer}>
-            <TouchableHighlight style={navbarStyles.navbarButton}
+            <TouchableHighlight style={navbarStyles.navbarButton2}
                 onPress={ () => { navigation.navigate('Home'); }}
                 >
                 <Image
@@ -58,12 +58,11 @@ const Navbar = () => {
                     source={require('../assets/camera.png')}
                     style={navbarStyles.image}
                     resizeMode = 'contain'
-
                 />
             </TouchableHighlight>
 
-            <TouchableHighlight style={navbarStyles.navbarButton}
-                onPress={() => { navigation.navigate('pokem'); }}
+            <TouchableHighlight style={navbarStyles.navbarButton2} 
+                onPress={() => { navigation.navigate('Login'); }}
                 >
                 <Image
                     source={require('../assets/user.png')}
@@ -93,20 +92,35 @@ const navbarStyles = StyleSheet.create({
         justifyContent: 'center',
         flexDirection: 'row',
         flexWrap: 'wrap',
-        borderWidth: 2,
-
+        borderWidth: 4,
+        borderLeftWidth: 4,
+        borderRightWidth: 4
     },
 
     navbarButton: {
         height: '100%',
         width: '33%',
-        borderWidth: 2,
+        borderRightWidth: 4,
+        borderLeftWidth: 4,
+        borderTopWidth: 0,
+        borderBottomWidth: 0,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+
+    navbarButton2: {
+        height: '100%',
+        width: '33%',
+        borderRightWidth: 0,
+        borderLeftWidth: 0,
+        borderTopWidth: 0,
+        borderBottomWidth: 0,
         alignItems: 'center',
         justifyContent: 'center',
     },
 
     image : { 
-        width: '50%', 
+        width: '45%', 
         height: undefined, 
         aspectRatio: 1,
     }
