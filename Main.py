@@ -9,6 +9,12 @@ from py_edamam import PyEdamam
 import textdistance as td
 import math
 import numbers
+import firebase_admin
+
+ACCOUNT_ID = "b0fb19e4e378abe3001cbec81c2a71f5"
+AUTH_TOKEN = "q2i_bqwNjbY3DwyHoMUeo3BEFaw6qxc97aGjwxJR"
+APP_ID = "6b661ac9"
+APP_KEY = "c0d96c7a8b663e432b6361134325f55f"
 
 # Find name from ingredient
 def extractRecipeIngredients(word):
@@ -35,7 +41,7 @@ def extractRecipeIngredients(word):
     return label[:len(label)-1]
 
 # Finds price of an item by not requiring the exact name (e.g. lobsters vs lobster)
-def closestWordDict(map, word):
+def closestWordDict(map, word, link):
     maxHamming = 0
     index = 0
     # print(itemPrices.content[i]["Description"])
@@ -61,6 +67,7 @@ def closestWordDict(map, word):
     result["Digital Coupon"] = map[index]["Digital Coupon"]
     result["Label"] = word
     result["UPC"] = map[index]["UPC"]
+    result["Link"] = link
     return result
 
 model = "@cf/microsoft/resnet-50"
@@ -125,7 +132,8 @@ result = {}
 for ingredient in items_map[0]["recipe"]["ingredients"]:
     # print(ingredient["text"])
     label = extractRecipeIngredients(ingredient["text"])
-    result[ingredient["text"]] = closestWordDict(itemsPrices_map, label)
+    print(items_map[0]["recipe"]["shareAs"])
+    result[ingredient["text"]] = closestWordDict(itemsPrices_map, label, items_map[0]["recipe"]["shareAs"])
 
 with open("result.json", "w") as outfile: 
     json.dump(result, outfile)

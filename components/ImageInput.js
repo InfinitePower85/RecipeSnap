@@ -45,6 +45,7 @@ export default function ImageInput() {
 
                 try { // note that the backend api doesn't work currently   
                     const response = await axios.post('https://your-backend-api.com/upload', formData);
+                    
                     if (response.status === 200) {
                         console.log('Image uploaded successfully:', response.data);
                         // Handle the backend response as needed
