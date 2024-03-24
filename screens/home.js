@@ -7,10 +7,6 @@ import baseStyle from '../styles/baseStyles';
 import { TouchableOpacity } from 'react-native';
 import { navbarStyles, Navbar } from '../components/navbar';
 
-
-import CameraInput from '../components/CameraInput';
-import ImageInput from '../components/ImageInput';
-
 const HomeScreen = ({route}) => {
     return (
         <SafeAreaView style={[baseStyle.safeArea, {backgroundColor: '#f5fbe2'}]}>
