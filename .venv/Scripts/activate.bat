@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\16097\Desktop\Rutgers\Freshman\RUMAD incubator\ReactProj\ruHacks2\ruHacks2\.venv
+set VIRTUAL_ENV=C:\Users\torub\OneDrive\Documents\GitHub\ruHacks2\.venv
 
 if not defined PROMPT set PROMPT=$P$G
 
