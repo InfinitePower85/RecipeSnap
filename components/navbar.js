@@ -3,8 +3,10 @@ import { View, Text, Image } from "react-native";
 import { StyleSheet } from "react-native";
 import {Dimensions} from 'react-native';
 import { TouchableHighlight } from "react-native";
+import { useNavigation } from '@react-navigation/core'; 
 
-state = {
+/**
+ * state = {
     login: 'block',
     home: 'none',
     cam: 'none',
@@ -31,13 +33,16 @@ state = {
     cam: 'none',
     profile: 'block',
   }));
+ */
 
 //Seperate component for Navbar
 const Navbar = () => {
+    const navigation = useNavigation(); 
+
     return (
         <View style={navbarStyles.navbarContainer}>
             <TouchableHighlight style={navbarStyles.navbarButton}
-                onPress={this.homePress}
+                onPress={ () => { navigation.navigate('Home'); }}
                 >
                 <Image
                     source={require('../assets/home.png')}
@@ -47,7 +52,7 @@ const Navbar = () => {
             </TouchableHighlight>
 
             <TouchableHighlight style={navbarStyles.navbarButton}
-                onPress={this.cameraPress}
+                onPress={() => { navigation.navigate('Camera'); }}
                 >
                 <Image
                     source={require('../assets/camera.png')}
@@ -58,7 +63,7 @@ const Navbar = () => {
             </TouchableHighlight>
 
             <TouchableHighlight style={navbarStyles.navbarButton}
-                onPress={this.profilePress}
+                onPress={() => { navigation.navigate('pokem'); }}
                 >
                 <Image
                     source={require('../assets/user.png')}
