@@ -25,7 +25,7 @@ app = FastAPI()
 # Set up CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["exp://172.31.239.228:8081"],  # Update with your React app's URL
+    allow_origins=["*"],  # Update with your React app's URL
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],  # Specify allowed methods
     allow_headers=["*"],
