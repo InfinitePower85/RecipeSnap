@@ -13,23 +13,13 @@ import ImageInput from '../components/ImageInput';
 
 const HomeScreen = ({route}) => {
     return (
-        <SafeAreaView style={[baseStyle.safeArea]}>
-            <ScrollView contentContainerStyle={[baseStyle.container, {backgroundColor: '#f5fbe2', flexGrow: 1}]}>
+        <SafeAreaView style={[baseStyle.safeArea, {backgroundColor: '#f5fbe2'}]}>
+            <ScrollView contentContainerStyle={[baseStyle.container, {flexGrow: 1}]}>
 
                 <Logo />
-                <Text>This is the home screen!!!!</Text>
 
                 <CameraInput />
                 <ImageInput />
-
-
-                <TouchableOpacity 
-                    onPress={() => route.navigate('Profile', {name: 'Jane'})}
-                    style={baseStyle.button}
-                > 
-                
-                <Text> Do something </Text> 
-                </TouchableOpacity>
                 
             </ScrollView>
             <Navbar></Navbar>

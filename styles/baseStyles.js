@@ -46,7 +46,6 @@ const baseStyle = StyleSheet.create({
         borderRadius: 8,
     }, 
     button: {
-        fontFamily: 'ralewaylight',
         flexDirection: 'row',
         backgroundColor: '#FFFFFF',
         padding: 10,
@@ -55,6 +54,19 @@ const baseStyle = StyleSheet.create({
         borderColor: '#000000',
         borderWidth: 1,
         width: 227,
+        height: 55,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    button2: {
+        flexDirection: 'row',
+        backgroundColor: '#FFFFFF',
+        padding: 10,
+        borderRadius: 10,
+        marginTop: 10,
+        borderColor: '#000000',
+        borderWidth: 2,
+        width: 130,
         height: 55,
         justifyContent: 'center',
         alignItems: 'center'

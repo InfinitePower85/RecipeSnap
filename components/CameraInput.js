@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Camera, CameraType } from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
 import { Dimensions } from 'react-native';
+import baseStyle from '../styles/baseStyles';
 
 export default function CameraInput() {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
@@ -61,7 +62,7 @@ export default function CameraInput() {
             style={{
               flexDirection: 'row',
               justifyContent: 'space-between',
-              paddingHorizontal: 30,
+              paddingHorizontal: 5,
             }}
           >
             <TouchableOpacity 
@@ -71,7 +72,7 @@ export default function CameraInput() {
                 );
               }}
             >
-               <Text>Flip Camera</Text>
+               {type === 'front' ? <Image source={require('../assets/flip_alt.png')} style={styles.image} /> : <Image source={require('../assets/flip.png')} style={styles.image} />}
             </TouchableOpacity>   
           </View>
         </Camera>
@@ -79,26 +80,24 @@ export default function CameraInput() {
         <Image source={{ uri: image }} style={styles.camera} />
       )}
 
-      <View>
-        {image ? (
-          <View
-            style={{
+      <View style={{
               flexDirection: 'row',
-              justifyContent: 'space-between',
-              paddingHorizontal: 50,
-            }}
-          >
-            <TouchableOpacity onPress={() => setImage(null)}>
-              <Text>Retake</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={savePicture}>
-              <Text>Save Picture</Text>
-            </TouchableOpacity>
+              justifyContent: 'center',
+            }}>
+        {image ? (
+            <>
+              <TouchableOpacity style={[baseStyle.button2, {marginRight: 50}]} onPress={() => setImage(null)}>
+                <Text>Retake</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={baseStyle.button2} onPress={savePicture}>
+                <Text>Save Picture</Text>
+              </TouchableOpacity>
+            </>
+
             
-          </View>
         ) : (
-          <TouchableOpacity onPress={takePicture} >
-            <Text>Take Picture</Text>
+          <TouchableOpacity onPress={takePicture} style={{alignItems: 'center'}}>
+            <Image source={require('../assets/pic_button.png')} style={[styles.image, {width: '45%', marginTop: 10}]}/>
           </TouchableOpacity>
         )}
       </View>
@@ -114,4 +113,9 @@ const styles = StyleSheet.create({
   camera: {
     height: Dimensions.get('screen').width
   },
+  image: { 
+    width: '37.5%', 
+    height: undefined, 
+    aspectRatio: 1,
+    }
 });
