@@ -12,5 +12,5 @@ const ExampleComponent = () =>  {
     </SafeAreaView>
   );
 }
-
+// This is just a component to illustrate buttons and hooks 
 export default ExampleComponent;

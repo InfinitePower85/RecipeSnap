@@ -10,6 +10,7 @@ const LoginScreen = ({navigation}) => {
           <Logo></Logo>
           <Text>Welcome to RecipeSnap!</Text>          
           <Text>Sign Up or Log In Below</Text>
+          
           <Button style={baseStyle.button}
           title="button"
           onPress={() =>

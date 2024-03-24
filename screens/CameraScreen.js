@@ -1,19 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native';
-import { Button } from 'react-native';
+import { StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 import {Logo, logoStyles} from '../components/logo';
 
 import baseStyle from '../styles/baseStyles';
-import { TouchableOpacity } from 'react-native';
 import { navbarStyles, Navbar } from '../components/navbar';
 
-const HomeScreen = ({route}) => {
+
+import CameraInput from '../components/CameraInput';
+import ImageInput from '../components/ImageInput';
+
+const CameraScreen = ({route}) => {
     return (
         <SafeAreaView style={[baseStyle.safeArea, {backgroundColor: '#f5fbe2'}]}>
             <ScrollView contentContainerStyle={[baseStyle.container, {flexGrow: 1}]}>
 
                 <Logo />
-                <Text> Hello, this is home screen </Text>
+
+                <CameraInput />
+                <ImageInput />
                 
             </ScrollView>
             <Navbar></Navbar>
@@ -29,4 +33,4 @@ const HomeScreen = ({route}) => {
     },
   });
   
-export default HomeScreen;
+export default CameraScreen;

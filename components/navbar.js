@@ -3,13 +3,46 @@ import { View, Text, Image } from "react-native";
 import { StyleSheet } from "react-native";
 import {Dimensions} from 'react-native';
 import { TouchableHighlight } from "react-native";
+import { useNavigation } from '@react-navigation/core'; 
+
+/**
+ * state = {
+    login: 'block',
+    home: 'none',
+    cam: 'none',
+    profile: 'none',
+  }
+  
+  homePress = () => this.setState(state => ({
+    login: 'none',
+    home: 'block',
+    cam: 'none',
+    profile: 'none',
+  }));
+  
+  cameraPress = () => this.setState(state => ({
+    login: 'none',
+    home: 'none',
+    cam: 'block',
+    profile: 'none',
+  }));
+  
+  profilePress = () => this.setState(state => ({
+    login: 'none',
+    home: 'none',
+    cam: 'none',
+    profile: 'block',
+  }));
+ */
 
 //Seperate component for Navbar
 const Navbar = () => {
+    const navigation = useNavigation(); 
+
     return (
         <View style={navbarStyles.navbarContainer}>
             <TouchableHighlight style={navbarStyles.navbarButton}
-                onPress={this.respondPress}
+                onPress={ () => { navigation.navigate('Home'); }}
                 >
                 <Image
                     source={require('../assets/home.png')}
@@ -19,7 +52,7 @@ const Navbar = () => {
             </TouchableHighlight>
 
             <TouchableHighlight style={navbarStyles.navbarButton}
-                onPress={this.respondPress}
+                onPress={() => { navigation.navigate('Camera'); }}
                 >
                 <Image
                     source={require('../assets/camera.png')}
@@ -30,7 +63,7 @@ const Navbar = () => {
             </TouchableHighlight>
 
             <TouchableHighlight style={navbarStyles.navbarButton}
-                onPress={this.respondPress}
+                onPress={() => { navigation.navigate('pokem'); }}
                 >
                 <Image
                     source={require('../assets/user.png')}
