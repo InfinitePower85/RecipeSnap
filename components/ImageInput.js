@@ -28,9 +28,6 @@ export default function ImageInput() {
             // launch image library and get selected image
             let result = await ImagePicker.launchImageLibraryAsync();
             console.log("ImagePicker result:", result); 
-            const ts = result.assets;
-            console.log(ts[0].uri)
-            console.log("sdajlfdsajlkfdsajlkfdsajlkfdsajlkf");
             console.log("hello", result.assets[0].uri);
             if(!result.cancelled && result.assets[0].uri) { 
                 // if an image is selected (not cancelled),  
@@ -75,7 +72,7 @@ export default function ImageInput() {
 
                 // no image selected
                 
-                <Text style={styles.errorText}>nooo22222{error}</Text> 
+                <Text style={styles.errorText}>{error}</Text> 
             )} 
         </View> 
     ); 
