@@ -10,6 +10,62 @@ import textdistance as td
 import math
 import numbers
 
+from fastapi import FastAPI, UploadFile
+from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
+import os
+import base64
+from typing import List
+ACCOUNT_ID = "b0fb19e4e378abe3001cbec81c2a71f5"
+AUTH_TOKEN = "q2i_bqwNjbY3DwyHoMUeo3BEFaw6qxc97aGjwxJR"
+APP_ID = "6b661ac9"
+APP_KEY = "c0d96c7a8b663e432b6361134325f55f"
+app = FastAPI()
+
+# Set up CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["exp://172.31.239.228:8081"],  # Update with your React app's URL
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],  # Specify allowed methods
+    allow_headers=["*"],
+)
+@app.post("/oo")
+async def stuff(hi):
+    return {"hello": str(hi)}
+
+@app.get("/")
+async def main():
+    print("asdfjkdsajk")
+    return {"message": "Hello World"}
+# Define an API endpoint for image upload
+@app.post("/upload")
+async def upload_image(file: UploadFile):
+    print("hello world 2 ajkfdsaf")
+    try:
+        # Save the uploaded image to a local directory
+        upload_directory = "uploaded_images"
+        os.makedirs(upload_directory, exist_ok=True)
+        file_path = os.path.join(upload_directory, file.filename)
+        with open(file_path, "wb") as f:
+            f.write(file.file.read())
+
+        return JSONResponse(content={"message": "Image uploaded successfully"}, status_code=200)
+    except Exception as e:
+        return JSONResponse(content={"error": str(e)}, status_code=500)
+
+# Define an API endpoint to get a list of uploaded images
+@app.get("/images")
+async def get_images():
+    image_directory = "uploaded_images"
+    images = []
+    for file_name in os.listdir(image_directory):
+        file_path = os.path.join(image_directory, file_name)
+        with open(file_path, "rb") as f:
+            image_data = base64.b64encode(f.read()).decode("utf-8")
+            images.append({"name": file_name, "data": image_data})
+    return images
+
 # Find name from ingredient
 def extractRecipeIngredients(word):
     words = word.split()
