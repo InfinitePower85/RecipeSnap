@@ -64,10 +64,12 @@ export default function ImageInput() {
             {/* render the image or error message */} 
             {file ? ( 
 
+
+
                 // display the selected image 
                 <View style={styles.imageContainer}> 
                     <Text>{file}</Text>
-                    {file && <Image source={{ uri: file }} /> }
+                    <Image source={{ uri: file }} style={{ width: 200, height: 200 }} />
                 </View> 
             ) : ( 
 

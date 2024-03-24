@@ -14,13 +14,12 @@ import ImageInput from '../components/ImageInput';
 const HomeScreen = ({route}) => {
     return (
         <SafeAreaView style={[baseStyle.safeArea]}>
-
             <ScrollView contentContainerStyle={[baseStyle.container, {backgroundColor: '#f5fbe2', flexGrow: 1}]}>
-                
-                <Logo> </Logo>
+
+                <Logo />
                 <Text>This is the home screen!!!!</Text>
 
-
+                <CameraInput />
                 <ImageInput />
 
 
