@@ -9,7 +9,7 @@ from py_edamam import PyEdamam
 import textdistance as td
 import math
 import numbers
-import firebase_admin
+#import firebase_admin
 
 from fastapi import FastAPI, UploadFile
 from fastapi.responses import JSONResponse

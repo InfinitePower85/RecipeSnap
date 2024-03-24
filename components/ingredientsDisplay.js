@@ -1,5 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, SectionList, StyleSheet } from "react-native";
+import { Linking } from 'react-native';
+
+
+function test(title, text) {
+  //console.log(title.includes('http'))
+  if (title.includes('http')) {
+    return ((
+      <View style={styles.sectionHeader}>
+        <Text style={[styles.sectionHeaderText, {color: '#98ff98'}]}
+          onPress={() => Linking.openURL(`${title}`)}>
+          {text}
+        </Text>
+      </View>
+    ))
+  } else {
+    return ((
+      <View style={styles.sectionHeader}>
+        <Text style={[styles.sectionHeaderText, {color: 'white'}]}>
+          {text}
+        </Text>
+      </View>
+    ))
+  }
+}
 
 export default function IngredientsDisplay() {
   const [data, setData] = useState(null);
@@ -26,6 +50,7 @@ export default function IngredientsDisplay() {
     })),
   }));
 
+  
   return (
     <View style={styles.container}>
       <SectionList
@@ -36,11 +61,7 @@ export default function IngredientsDisplay() {
             <Text style={styles.text}>{item.key}: {item.value}</Text>
           </View>
         )}
-        renderSectionHeader={({ section: { title } }) => (
-          <View style={styles.sectionHeader}>
-            <Text style={styles.sectionHeaderText}>{title}</Text>
-          </View>
-        )}
+        renderSectionHeader={({ section: { title } }) => test(title, title)}
       />
     </View>
   );
