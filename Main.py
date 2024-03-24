@@ -59,6 +59,8 @@ def closestWordDict(map, word):
     result["Store Discount"] = map[index]["Store Discount"]
     result["Loyalty Discount"] = map[index]["Loyalty Discount"]
     result["Digital Coupon"] = map[index]["Digital Coupon"]
+    result["Label"] = word
+    result["UPC"] = map[index]["UPC"]
     return result
 
 model = "@cf/microsoft/resnet-50"
@@ -77,23 +79,23 @@ image.save("./image.png", format("png"))
 with open("image.png", 'rb') as image_file:
     image_bytes = image_file.read()
 
-# response = requests.post(
-#     f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/{model}",
-#     headers={"Authorization": f"Bearer {AUTH_TOKEN}"},
-#     data=image_bytes,
-#     # prompt="What is inside this food?"
-# )
-
-# inference = response.json()
-
-# maxScore = 0
-# maxFood = ""
-# for food in inference["result"]:
-#     if(food["score"] > maxScore):
-#         maxScore = food["score"]
-#         maxFood = food["label"]
-
 maxFood = "BURRITO"
+
+response = requests.post(
+    f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/{model}",
+    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},
+    data=image_bytes,
+    # prompt="What is inside this food?"
+)
+
+inference = response.json()
+
+maxScore = 0
+maxFood = ""
+for food in inference["result"]:
+    if(food["score"] > maxScore):
+        maxScore = food["score"]
+        maxFood = food["label"]
 
 request_url = "https://api.edamam.com/search?q=" + maxFood + "&app_id=" + APP_ID + "&app_key=" + APP_KEY
 r = requests.get(request_url)
@@ -121,10 +123,9 @@ for i, item in enumerate(itemsPrices_list):
 
 result = {}
 for ingredient in items_map[0]["recipe"]["ingredients"]:
-    print(ingredient["text"])
+    # print(ingredient["text"])
     label = extractRecipeIngredients(ingredient["text"])
-    result[label] = closestWordDict(itemsPrices_map, label)
-    print(result[label])
+    result[ingredient["text"]] = closestWordDict(itemsPrices_map, label)
 
 with open("result.json", "w") as outfile: 
     json.dump(result, outfile)
