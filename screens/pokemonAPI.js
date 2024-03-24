@@ -15,7 +15,7 @@ const PokemonInfo = () => {
       try {
         const rand = Math.ceil(Math.random() * 1025) 
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${rand}`);
-        console.log(response.data.height, "hello")
+        console.log(rand, "Pokemon data")
         setPokemonData(response.data);
         setLoading(false);
       } catch (error) {
