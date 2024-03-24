@@ -8,14 +8,13 @@ const LoginScreen = ({navigation}) => {
     return (
         <View style={styles.container}>
           <Logo></Logo>
-          <Text>Welcome to RecipeSnap!</Text>          
-          <Text>Sign Up or Log In Below</Text>
+          <Text>Welcome to RecipeSnap!</Text>         
           
           <Button style={baseStyle.button}
-          title="button"
-          onPress={() =>
-            navigation.navigate('Home')
-          } 
+            title="START"
+            onPress={() =>
+              navigation.navigate('Home')
+            } 
           />
         </View>
     );

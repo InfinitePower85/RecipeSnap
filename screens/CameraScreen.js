@@ -8,6 +8,7 @@ import { navbarStyles, Navbar } from '../components/navbar';
 
 import CameraInput from '../components/CameraInput';
 import ImageInput from '../components/ImageInput';
+import IngredientsDisplay from '../components/IngredientsDisplay';
 
 const CameraScreen = ({route}) => {
     return (
@@ -18,6 +19,8 @@ const CameraScreen = ({route}) => {
 
                 <CameraInput />
                 <ImageInput />
+
+                <IngredientsDisplay />
                 
             </ScrollView>
             <Navbar></Navbar>
