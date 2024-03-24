@@ -4,8 +4,10 @@ import { View, Text, Image, TouchableOpacity,
 import * as ImagePicker from "expo-image-picker"; 
 import { useState } from "react";
 import baseStyle from "../styles/baseStyles";
-
-
+//import * as FileSystem from 'expo-file-system';
+import axios from "axios";
+  
+  // Example usage:
 export default function ImageInput() { 
     const [file, setFile] = useState(null); 
     const [error, setError] = useState(null); 
@@ -34,7 +36,24 @@ export default function ImageInput() {
                 // update the file state variable 
                 setFile(result.assets[0].uri); 
                 console.log("File state updated:", file);
-  
+                const formData = new FormData();
+                formData.append('image', {
+                  name: 'SampleFile.jpg', // Whatever your filename is
+                  uri: file,
+                  type: 'image/jpeg', // Adjust the type based on your image format
+                });
+
+                try { // note that the backend api doesn't work currently   
+                    const response = await axios.post('https://your-backend-api.com/upload', formData);
+                    if (response.status === 200) {
+                        console.log('Image uploaded successfully:', response.data);
+                        // Handle the backend response as needed
+                    } else {
+                        console.error('Image upload failed.');
+                    }
+                } catch (error) {
+                    console.error('Error uploading image:', error);
+                }
                 // Clear any previous errors 
                 setError(null); 
             } else {
