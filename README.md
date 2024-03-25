@@ -1,6 +1,6 @@
 # HackRU - Spring 2024
 
-Submitted by: **Andrew Chang**
+Submitted by: **Andy Chang, Terry Nguyen, Artem Torubarov, Laurent Drejaj**
 
 Time spent: **24** hours spent in total
 
